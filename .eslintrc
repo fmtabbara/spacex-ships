@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "project": ["./tsconfig.json"] },
+  "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"],
+  "rules": {
+    "consistent-return": "error",
+    "no-duplicate-imports": "error",
+    "no-fallthrough": "error",
+    "no-empty-function": "error",
+    "no-use-before-define": "error"
+  }
+}

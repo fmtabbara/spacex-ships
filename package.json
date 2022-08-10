@@ -1,0 +1,34 @@
+{
+  "name": "heni-tech-challenge",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "fmtabbara",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "yarn tsc && parcel ./public/index.html",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint src/**",
+    "lint:fix": "eslint src/**"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.0",
+    "graphql": "^16.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-graphql": "2.7.0",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "eslint": "^8.21.0",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10",
+    "typescript": "^4.7.4"
+  }
+}
