@@ -1,5 +1,6 @@
 import {
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -12,13 +13,20 @@ import React from "react"
 import { Ship } from "../gql/types"
 import { useGetShipDetail } from "../hooks"
 
+const ActiveStatusChip = ({ isActive }: { isActive: boolean }) => (
+  <Chip
+    label={isActive ? "Active" : "Inactive"}
+    color={isActive ? "success" : "error"}
+  />
+)
+
 const ShipDetailItem = ({
   label,
   value,
   divider,
 }: {
   label: string
-  value: string
+  value: string | React.ReactElement
   divider?: boolean
 }) => (
   <>
@@ -39,23 +47,27 @@ export const ShipDetailModal = ({
   shipId?: Ship["id"]
   onClose: () => void
 }) => {
+  // errors need to be captured and managed
+  // loading state should be captured and managed
   const { data } = useGetShipDetail(shipId)
 
   if (data)
     return (
-      <Dialog open={Boolean(shipId)} onClose={onClose} fullWidth maxWidth='xs'>
+      <Dialog open={Boolean(shipId)} onClose={onClose} fullWidth maxWidth='sm'>
         <DialogTitle>
-          <Typography variant='h5'>{data.ship.name}</Typography>
+          <Stack
+            direction='row'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <Typography variant='h5'>{data.ship.name}</Typography>
+            <ActiveStatusChip isActive={data.ship?.active} />
+          </Stack>
         </DialogTitle>
         <DialogContent dividers>
           <ShipDetailItem
             label='Home port'
             value={data.ship.home_port}
-            divider
-          />
-          <ShipDetailItem
-            label='Active'
-            value={String(data.ship.active)}
             divider
           />
           <ShipDetailItem label='Type' value={data.ship.type} divider />

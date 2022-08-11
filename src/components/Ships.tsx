@@ -10,6 +10,7 @@ const Countries = ({
 }: {
   onShipSelect: (shipId: string) => void
 }) => {
+  // errors need to be captured and managed
   const { loading, data, fetchMoreShips } = useGetShips(DATA_LIMIT)
 
   const buttonRef = useRef<HTMLButtonElement>(null)
